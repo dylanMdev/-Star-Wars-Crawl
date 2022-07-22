@@ -1,0 +1,81 @@
+$browser-context: 16; // Default browser size of em
+@function toEm($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return calc($pixels / $context) * 1em;
+}
+
+@mixin nullMagPad {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    @include nullMagPad;
+    color: red;
+    background: url('img/stars-bg.png');
+}
+.text-fade {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));
+    z-index: 1;
+}
+.star-wars {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    transform-origin:50% 100%;
+    transform:perspective(450px) rotateX(20deg);
+    //color:rgb(226, 223, 47);
+    &-crawl {
+        top:-2650px;
+        bottom:0;
+        left:0;
+        right:0;
+        padding-top:3500px;
+        position:absolute;
+        overflow:hidden;
+        text-align:center;
+        font-family:sans-serif;
+        animation:autoscroll 800s linear;
+    }
+    &-crawl > .star-wars-title {
+        width: 100%;
+        text-align: center;
+    }
+}
+@keyframes autoscroll {
+    to{
+        margin-top:-50000px;
+    }    
+}
+@mixin pFontSize($size: 2) {
+    h1 {
+        font-size: toEm($size * 24px);
+    }
+    p {
+        font-size: toEm($size * 16px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    @include pFontSize($size: 2.5);
+}
+/* ~1k devices */
+@media only screen and (min-width: 769px) and (max-width: 1920px) {
+    @include pFontSize($size: 3.0);
+}
+/* > 1k+ device */
+@media only screen and (min-width: 1921px) {
+    @include pFontSize($size: 3.5);
+}
