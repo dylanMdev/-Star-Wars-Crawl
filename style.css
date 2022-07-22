@@ -1,0 +1,85 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  color: red;
+  background: url("img/stars-bg.png");
+}
+
+.text-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  z-index: 1;
+}
+
+.star-wars {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform-origin: 50% 100%;
+  transform: perspective(450px) rotateX(20deg);
+}
+.star-wars-crawl {
+  top: -2650px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 3500px;
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  font-family: sans-serif;
+  -webkit-animation: autoscroll 800s linear;
+          animation: autoscroll 800s linear;
+}
+.star-wars-crawl > .star-wars-title {
+  width: 100%;
+  text-align: center;
+}
+
+@-webkit-keyframes autoscroll {
+  to {
+    margin-top: -50000px;
+  }
+}
+
+@keyframes autoscroll {
+  to {
+    margin-top: -50000px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 3.75em;
+  }
+
+  p {
+    font-size: 2.5em;
+  }
+}
+/* ~1k devices */
+@media only screen and (min-width: 769px) and (max-width: 1920px) {
+  h1 {
+    font-size: 4.5em;
+  }
+
+  p {
+    font-size: 3em;
+  }
+}
+/* > 1k+ device */
+@media only screen and (min-width: 1921px) {
+  h1 {
+    font-size: 5.25em;
+  }
+
+  p {
+    font-size: 3.5em;
+  }
+}
